@@ -1,6 +1,6 @@
 // Configuração do Supabase para PostgreSQL
-const SUPABASE_URL = 'https://seu-projeto.supabase.co'; // Substitua pela URL do seu projeto Supabase
-const SUPABASE_ANON_KEY = 'sua-chave-anonima'; // Substitua pela chave anônima do Supabase
+const SUPABASE_URL = 'https://kbtjgelflweevfvtmxxi.supabase.co'; // Substitua pela URL do seu projeto Supabase
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtidGpnZWxmbHdlZXZmdnRteHhpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc0Mjg4MDEsImV4cCI6MjA3MzAwNDgwMX0.bv79MT8O_P2O_Cy-9N9mhIkDLuhvZ3MgJISMAsP_Z-Q'; // Substitua pela chave anônima do Supabase
 
 const { createClient } = supabase;
 const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
