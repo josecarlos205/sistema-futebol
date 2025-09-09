@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogos - Sistema de Campeonato de Futebol</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <header>
+        <h1>Sistema de Campeonato de Futebol Amador</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="times.html">Times</a></li>
+                <li><a href="jogadores.html">Jogadores</a></li>
+                <li><a href="jogos.html">Jogos</a></li>
+                <li><a href="classificacao.html">Classificação</a></li>
+                <li><a href="artilharia.html">Artilharia</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="jogos">
+            <h2>Gerenciamento de Jogos</h2>
+
+            <div class="acoes">
+                <button id="btnGerarTabela" class="btn-primary">Gerar Tabela de Jogos</button>
+                <button id="btnNovoJogo" class="btn-secondary">Novo Jogo</button>
+            </div>
+
+            <div id="formNovoJogo" style="display: none;">
+                <form id="jogoForm">
+                    <h3>Agendar Novo Jogo</h3>
+
+                    <label for="timeCasa">Time da Casa:</label>
+                    <select id="timeCasa" required>
+                        <option value="">Selecione</option>
+                    </select>
+
+                    <label for="timeVisitante">Time Visitante:</label>
+                    <select id="timeVisitante" required>
+                        <option value="">Selecione</option>
+                    </select>
+
+                    <label for="dataHora">Data e Hora:</label>
+                    <input type="datetime-local" id="dataHora" required>
+
+                    <label for="local">Local:</label>
+                    <input type="text" id="local" required>
+
+                    <label for="arbitro">Árbitro:</label>
+                    <input type="text" id="arbitro">
+
+                    <label for="observacoes">Observações:</label>
+                    <textarea id="observacoes"></textarea>
+
+                    <button type="submit">Agendar</button>
+                    <button type="button" id="btnCancelarJogo">Cancelar</button>
+                </form>
+            </div>
+
+            <div id="listaJogos">
+                <h3>Jogos Agendados</h3>
+                <div class="filtros">
+                    <label for="filtroStatus">Status:</label>
+                    <select id="filtroStatus">
+                        <option value="">Todos</option>
+                        <option value="agendado">Agendado</option>
+                        <option value="em_andamento">Em Andamento</option>
+                        <option value="finalizado">Finalizado</option>
+                        <option value="cancelado">Cancelado</option>
+                    </select>
+                </div>
+
+                <table id="tabelaJogos">
+                    <thead>
+                        <tr>
+                            <th>Data/Hora</th>
+                            <th>Jogo</th>
+                            <th>Placar</th>
+                            <th>Local</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Jogos serão carregados dinamicamente -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Modal para registrar resultado -->
+            <div id="modalResultado" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h3>Registrar Resultado</h3>
+                    <form id="resultadoForm">
+                        <div id="infoJogo"></div>
+
+                        <label for="golsCasa">Gols Time Casa:</label>
+                        <input type="number" id="golsCasa" min="0" required>
+
+                        <label for="golsVisitante">Gols Time Visitante:</label>
+                        <input type="number" id="golsVisitante" min="0" required>
+
+                        <div id="golsJogadores">
+                            <h4>Gols Marcados</h4>
+                            <div id="listaGolsCasa"></div>
+                            <div id="listaGolsVisitante"></div>
+                        </div>
+
+                        <div id="cartoesJogadores">
+                            <h4>Cartões Distribuídos</h4>
+                            <div id="listaCartoesCasa"></div>
+                            <div id="listaCartoesVisitante"></div>
+                        </div>
+
+                        <button type="submit">Salvar Resultado</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Sistema de Campeonato de Futebol - JCS</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="js/database.js"></script>
+    <script src="js/matches.js"></script>
+    <script src="js/pdf-generator.js"></script>
+</body>
+</html>
